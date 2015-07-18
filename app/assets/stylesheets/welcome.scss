@@ -2,3 +2,48 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.social-btn{
+  border-radius: 3px;
+  padding: 8px 31px;
+  background: #3bbfa7;
+  border-color: #109eab;
+  border: none;
+  border-bottom: 3px solid #109eab;
+  font-size: 19px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+
+.social-btn:active{
+  transform: translateY(3px);
+}
+
+.social-btn:focus{
+  outline: none;
+}
+
+.social-btn:hover{
+  background: #6ccfbd;
+  border-bottom-color: #3bbfa7;
+}
+
+.social-btn .sub-follow{
+  text-transform: lowercase;
+  font-size: 11px;
+  display: block;
+}
+
+
+.social-btn .button-icon{
+  font-size: 41px;
+  padding-right: 10px;
+  line-height: 14px;
+}
+
+
+.left{
+  float: left;
+}

@@ -18,6 +18,8 @@ gem 'sass-rails', '~> 5.0'
 # Use Twitter Bootstrap
 gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
+gem "font-awesome-rails"
+# Use icon font
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
