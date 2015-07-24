@@ -1,0 +1,13 @@
+<h1>
+  <%= @question.title %>
+  <% if @question.resolved%>
+    <span class="label label-primary">Resolved</span>
+  <% else %>
+    <span class="label label-default">Unresolved</span>
+  <% end %>
+
+</h1>
+
+<%= link_to "Edit", edit_question_path, class: 'btn btn-success' %>
+
+<p><%= @question.body %></p>
