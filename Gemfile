@@ -57,5 +57,7 @@ group :development, :test do
 
   gem 'railroady'
 
+  gem 'devise'
+
 end
 
