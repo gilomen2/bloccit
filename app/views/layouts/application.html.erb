@@ -9,9 +9,24 @@
 </head>
 <body>
 <div class="container">
-  <ul class="nav nav-tabs">
-    <li><%= link_to "Bloccit", root_path %></li>
-    <li><%= link_to "About", about_path %></li>
+  <ul class="nav nav-pills">
+    <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Bloccit", root_path %></li>
+    <li class="<%= 'active' if current_page?(about_path) %>"><%= link_to "About", about_path %></li>
+
+
+      <% if current_user %>
+          <li role="presentation" class="dropdown pull-right">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+      <% else %>
+      <div class="user-info pull-right">
+        <%= link_to "Sign In", new_user_session_path %> or
+        <%= link_to "Sign Up", new_user_registration_path %>
+      </div>
+      <% end %>
   </ul>
 
   <% if flash[:notice] %>
