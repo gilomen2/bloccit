@@ -1,0 +1,2 @@
+class SummaryPolicy < PostPolicy
+end
