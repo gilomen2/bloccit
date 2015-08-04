@@ -1,4 +1,4 @@
-class SummariesController < ApplicationController
+class SummaryController < ApplicationController
   def show
     @summary = Summary.find(params[:id])
     @post = Post.find(params[:post_id])
@@ -12,12 +12,12 @@ class SummariesController < ApplicationController
   end
 
   def create
-    @summary = Summary.new(params.require(:summary).permit(:body))
+    @summary = Summary.new(params.require(:summary).permit(:body, :post_id))
     @post = Post.find(params[:post_id])
     @topic = Topic.find(params[:topic_id])
     if @summary.save
       flash[:notice] = "Summary was saved."
-      redirect_to [@topic, @post, @summary]
+      redirect_to [@topic, @post]
     else
       flash[:error] = "There was an error saving the summary. Please try again."
       render :new
