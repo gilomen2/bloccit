@@ -1,9 +1,8 @@
 <h1><%= @post.title %></h1>
-<small>Summary:</small>
 <% if @post.summary %>
-  <h3><%= @post.summary.body %> </h3>
+  <h4><small>Summary:</small><br><%= @post.summary.body %> <small><%= link_to "(Edit Summary)", edit_topic_post_summary_path(@topic, @post, @post.summary.id) %></small></h4>
 <% else %>
-  <%= link_to "Create summary for the post", new_topic_post_summary_path(@topic, @post) %>
+  <%= link_to "(Create Summary)", new_topic_post_summary_path(@topic, @post) %>
 <% end %>
 <div class="row">
   <div class="col-md-8">

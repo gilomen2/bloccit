@@ -34,7 +34,7 @@ class SummaryController < ApplicationController
     @summary = Summary.find(params[:id])
     @post = Post.find(params[:post_id])
     @topic = Topic.find(params[:topic_id])
-    if @summary.update_attributes(params.require(:summary).permit(:body))
+    if @summary.update_attributes(params.require(:summary).permit(:body, :post_id))
       flash[:notice] = "Summary was updated."
       redirect_to [@topic, @post]
     else
