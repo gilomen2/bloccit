@@ -9,6 +9,7 @@
     <% @posts.each do |post| %>
     <div class="media">
       <div class="media-body">
+        <%= image_tag(post.image.thumb.url, :class => 'pull-left topic-post-img') if post.try(:image?) %>
         <h4 class="media-heading">
           <%= link_to (markdown_to_html post.title), [@topic, post] %>
         </h4>
