@@ -5,6 +5,14 @@
       <%= image_tag(@post.user.avatar.tiny.url) if @post.user.try(:avatar?) %> submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
     </small>
     <p><%= markdown_to_html @post.body %></p>
+    <h3>Leave a Comment:</h3>
+    <%= render partial: "/comments/form", locals: { topic: @topic, post: @post } %>
+    <% if @comments.count > 0 %>
+    <div class="comments">
+      <h4>Comments</h4>
+      <%= render partial: "/comments/comment", collection: @comments %>
+    </div>
+    <% end %>
   </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>
