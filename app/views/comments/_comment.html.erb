@@ -1,6 +1,10 @@
 <% unless comment.id.nil? %>
-<div class="comment">
-  <p><em><small><%= comment.user.name %> on <%= comment.created_at.strftime("%B %e, %Y at %l:%M:%S %p") %></small></em></p>
-  <%= comment.body %>
-</div>
+  <div class="comment">
+    <p><em><small><%= comment.user.name %> on <%= comment.created_at.strftime("%B %e, %Y at %l:%M:%S %p") %></small></em>
+      <% if policy(comment).destroy? %>
+        | <%= link_to "Delete", [@topic, @post, comment], method: :delete, data: {confirm: "Are you sure you want to delete this comment?"} %>
+      <% end %>
+    </p>
+    <%= comment.body %>
+  </div>
 <% end %>
