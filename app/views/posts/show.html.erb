@@ -6,7 +6,9 @@
     </small>
     <%= image_tag(@post.image.main.url, :class => 'img-responsive post-img') if @post.try(:image?) %>
     <p><%= markdown_to_html @post.body %></p>
-    <%= render partial: "/comments/form", locals: { topic: @topic, post: @post, comment: @comment } %>
+    <% if policy(@comment).create? %>
+      <%= render partial: "/comments/form", locals: { topic: @topic, post: @post, comment: @comment } %>
+    <% end %>
     <% if @comments.count > 0 %>
       <div class="comments">
         <h4>Comments</h4>
