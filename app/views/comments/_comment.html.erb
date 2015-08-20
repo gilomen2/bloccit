@@ -1,4 +1,6 @@
+<% unless comment.id.nil? %>
 <div class="comment">
   <p><em><small><%= comment.user.name %> on <%= comment.created_at.strftime("%B %e, %Y at %l:%M:%S %p") %></small></em></p>
   <%= comment.body %>
 </div>
+<% end %>
