@@ -1,5 +1,5 @@
   <h3>Leave a Comment:</h3>
-  <%= form_for [topic, post, comment] do |f| %>
+  <%= form_for [post, comment] do |f| %>
   <% if post.errors.any? %>
      <div class="alert alert-danger">
       <h4>There are <%= pluralize(post.errors.count, "error") %>.</h4>
