@@ -3,20 +3,20 @@ require 'rails_helper'
 describe Vote do
   describe "validations" do
     before do
-      @post = Post.new(title: 'Post title', body: 'This is the post body')
+      @post = Post.create(title: 'Post title', body: 'This is the post body')
     end
     it "only allows -1 or 1 as values" do
-      @post.votes.create(value: 1)
-      expect(@post.points).to eq(1)
+      v1 = @post.votes.create(value: 1)
+      expect(v1.valid?).to eq(true)
 
-      @post.votes.create(value: -1)
-      expect(@post.points).to eq(0)
+      v2 = @post.votes.create(value: -1)
+      expect(v2.valid?).to eq(true)
 
-      @post.votes.create(value: 3)
-      expect(@post.points).to eq(0)
+      v3 = @post.votes.create(value: 3)
+      expect(v3.valid?).to eq(false)
 
-      @post.votes.create(value: -3)
-      expect(@post.points).to eq(0)
+      v4 = @post.votes.create(value: -3)
+      expect(v4.valid?).to eq(false)
     end
   end
 end
