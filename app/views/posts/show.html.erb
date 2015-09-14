@@ -7,17 +7,13 @@
     </small>
     <%= image_tag(@post.image.main.url, :class => 'img-responsive post-img') if @post.try(:image?) %>
     <p><%= markdown_to_html @post.body %></p>
+    <% if policy(@comment).create? %>
+      <%= render partial: "/comments/form"%>
+    <% end %>
     <% if @comments.count > 0 %>
       <div class="comments">
         <h4>Comments</h4>
-        <div class="js-comments">
-          <%= render partial: "/comments/comment", collection: @comments %>
-        </div>
-        <div class="new-comment">
-          <% if policy(@comment).create? %>
-            <%= render 'comments/form' %>
-          <% end %>
-        </div>
+        <%= render partial: "/comments/comment", collection: @comments %>
       </div>
     <% end %>
   </div>
